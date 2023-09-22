@@ -13,7 +13,7 @@ function InputForm() {
         }
 
         try {
-            const response = await fetch('https://ppl-api2.vercel.app/api/hitung-akar-kuadrat', {
+            const response = await fetch('http://localhost:8000/api/hitung-akar-kuadrat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

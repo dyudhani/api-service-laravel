@@ -18,7 +18,7 @@ function TabelBilangan() {
         // Fungsi untuk mengambil data dari Laravel API
         const fetchData = async () => {
         try {
-            const response = await fetch('https://ppl-api2.vercel.app/api/data-bilangan');
+            const response = await fetch('http://localhost:8000/api/data-bilangan');
             if (!response.ok) {
             throw new Error('Gagal mengambil data dari API');
             }

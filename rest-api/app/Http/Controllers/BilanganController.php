@@ -52,15 +52,6 @@ class BilanganController extends Controller
         $calculation->save();
 
         return response()->json(['hasil_akar_kuadrat' => $hasil, 'waktu_respons' => $formattedResponseTime], 200);
-
-        // // Simpan response time ke dalam database
-        // $calculation = new Bilangan();
-        // $calculation->bilangan = $angka;
-        // $calculation->hasil = $hasil;
-        // $calculation->waktu_respons = $formattedResponseTime; // Menyimpan response time dalam format "jam:menit:detik"
-        // $calculation->save();
-
-        // return response()->json(['hasil_akar_kuadrat' => $hasil, 'waktu_respons' => $formattedResponseTime], 200);
     }
 
     public function getDataBilangan()
