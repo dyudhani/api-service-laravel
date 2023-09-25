@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Bilangan;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,5 +59,34 @@ class BilanganController extends Controller
     {
         $dataBilangan = Bilangan::all();
         return response()->json($dataBilangan);
+    }
+
+    public function calculateSqrtSql(Request $request)
+    {
+        //mulai timer
+        $start = microtime(true);
+
+        $request->validate([
+            'angka' => 'required|numeric|min:0'
+        ]);
+
+        $angka = $request->input('angka');
+
+        //panggil stored procedure calculateSqrt
+        $hasil = DB::select('CALL calculateSqrt(?)', array($angka));
+
+        $end = microtime(true);
+
+        //hitung execution time
+        $execution_time = gmdate('H:i:s', ($end - $start) * 1000);
+
+        //ambil hasil perhitungan dari hasil set
+        $hasil = $hasil[0]->hasil;
+
+        return response()->json([
+            'input_angka' => $angka,
+            'hasil_akar_kuadrat' => $hasil,
+            'waktu_respons' => $execution_time
+        ], 200);
     }
 }

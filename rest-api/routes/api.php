@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/hitung-akar-kuadrat', [BilanganController::class, 'hitungAkarKuadrat']);
 Route::get('/data-bilangan', [BilanganController::class, 'getDataBilangan']);
 
-// Route::resource('bilangan', BilanganController::class);
+Route::post('/calculate-sqrt-sql', [BilanganController::class, 'calculateSqrtSql']);
